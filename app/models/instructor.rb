@@ -33,10 +33,8 @@ class Instructor
             if boating_test.student == student && boating_test.test_name == test_name
                 boating_test.status = status
                 boating_test_instance = boating_test
-            elsif boating_test.student == student || boating_test.test_name == test_name
-                boating_test.test_name = test_name
-                boating_test.status = status
-                boating_test_instance = boating_test
+            elsif boating_test.student == student && !(boating_test.test_name == test_name)
+                boating_test_instance = BoatingTest.new(student, test_name, status, self)
             end
         end
         boating_test_instance
